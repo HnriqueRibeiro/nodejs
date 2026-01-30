@@ -1,4 +1,5 @@
 import { routes } from "../routes.js"
+import { extractQueryParams } from "../utils/extract-query-params.js"
 
 export function routeHandler(req, res) {
     const route = routes.find((route) => {
@@ -9,9 +10,12 @@ export function routeHandler(req, res) {
         const routeParams = req.url.match(route.path)
 
         //pegando o id
-        const { ...params } = routeParams.groups
+        const { query, ...params } = routeParams.groups
 
-        console.log(params);
+        extractQueryParams(query)
+
+        req.params = params
+        req.query = query ? extractQueryParams(query) :{}
 
         return route.handler(req, res)
     }

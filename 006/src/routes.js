@@ -5,7 +5,7 @@ export const routes = [
         method: "GET",
         path: parseRoutePath('/products'),
         handler: (req, res) => {
-            return res.end("lista encontrada!")
+            return res.end(JSON.stringify(req.query));
         },
     },
     {
@@ -20,7 +20,7 @@ export const routes = [
         method: "DELETE",
         path: parseRoutePath('/products/:id'),
         handler: (req, res) => {
-            return res.end("Removido!")
+            return res.end("Produto removido com ID: " + req.params.id)
         },
     },
 ]
