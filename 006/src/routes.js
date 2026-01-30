@@ -5,6 +5,7 @@ export const routes = [
         method: "GET",
         path: parseRoutePath('/products'),
         handler: (req, res) => {
+
             return res.end(JSON.stringify(req.query));
         },
     },

@@ -10,12 +10,10 @@ export function routeHandler(req, res) {
         const routeParams = req.url.match(route.path)
 
         //pegando o id
-        const { query, ...params } = routeParams.groups
-
-        extractQueryParams(query)
+        const { query, ...params } = routeParams.groups 
 
         req.params = params
-        req.query = query ? extractQueryParams(query) :{}
+        req.query = query ? extractQueryParams(query) : {}
 
         return route.handler(req, res)
     }
