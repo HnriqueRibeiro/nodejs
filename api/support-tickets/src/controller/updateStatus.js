@@ -1,0 +1,9 @@
+export function upadateStatus({req,res,database}){
+    const {id} = req.params
+    const {solution} = req.body
+    database.update("tickets", id, {
+        "status": "closed",
+        solution
+    })
+    return res.writeHead(200).end()
+}
